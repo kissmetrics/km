@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Accept</title>
+
+	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+
+	<script src="./js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="./js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="./index.html">Home</a>
+          <a href="./index.html#classes">Classes</a>
+          <a href="./index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="./spec/accept_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="spec/accept.rb">spec/accept.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="Object.html">Object</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-clear">#clear</a></li>
+					
+					<li><a href="#method-i-close">#close</a></li>
+					
+					<li><a href="#method-i-handle_input">#handle_input</a></li>
+					
+					<li><a href="#method-i-input_history">#input_history</a></li>
+					
+					<li><a href="#method-i-parse_input">#parse_input</a></li>
+					
+					<li><a href="#method-i-wait">#wait</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="./Gemfile.html">Gemfile</a></li>
+				
+					<li class="file"><a href="./README_rdoc.html">README.rdoc</a></li>
+				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="./images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="./KM.html">KM</a></li>
+				
+					<li><a href="./KM/IdentError.html">KM::IdentError</a></li>
+				
+					<li><a href="./KM/InitError.html">KM::InitError</a></li>
+				
+					<li><a href="./KM/SaaS.html">KM::SaaS</a></li>
+				
+					<li><a href="./Accept.html">Accept</a></li>
+				
+					<li><a href="./Hash.html">Hash</a></li>
+				
+					<li><a href="./Helper.html">Helper</a></li>
+				
+					<li><a href="./KMError.html">KMError</a></li>
+				
+					<li><a href="./Object.html">Object</a></li>
+				
+					<li><a href="./String.html">String</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Accept</h1>
+
+		<div id="description">
+			<p>
+a library to accept connections as a server, and send back what it received
+on request.
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+		<div id="constants-list" class="section">
+			<h3 class="section-header">Constants</h3>
+			<dl>
+			
+				<dt><a name="URI_REXEGP">URI_REXEGP</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+			</dl>
+		</div>
+		
+
+		<!-- Attributes -->
+		
+		<div id="attribute-method-details" class="method-section section">
+			<h3 class="section-header">Attributes</h3>
+
+			
+			<div id="server-attribute-method" class="method-detail">
+				<a name="server"></a>
+				
+				<a name="server="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">server</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="session-attribute-method" class="method-detail">
+				<a name="session"></a>
+				
+				<a name="session="></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">session</span><span
+						class="attribute-access-type">[RW]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+			<div id="opts-attribute-method" class="method-detail">
+				<a name="opts"></a>
+				
+				<div class="method-heading attribute-method-heading">
+					<span class="method-name">opts</span><span
+						class="attribute-access-type">[R]</span>
+				</div>
+
+				<div class="method-description">
+				
+				
+				
+				</div>
+			</div>
+			
+		</div>
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(args = {})</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 14</span>
+14:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">args</span> = {})
+15:     <span class="ruby-identifier">opts</span> = { <span class="ruby-value">:port</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">9292</span>, <span class="ruby-value">:debug</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span> }
+16:     <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">args</span>)
+17: 
+18:     <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Starting up server on port #{opts[:port]} ...&quot;</span>
+19:     <span class="ruby-ivar">@opts</span>           = <span class="ruby-identifier">opts</span>
+20:     <span class="ruby-ivar">@server</span>         = <span class="ruby-constant">TCPServer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:port</span>])
+21:     <span class="ruby-identifier">@@input_history</span> = []
+22:     <span class="ruby-ivar">@handle</span>         = <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">start</span> <span class="ruby-keyword kw">do</span>
+23:       <span class="ruby-keyword kw">while</span> (<span class="ruby-ivar">@session</span> = <span class="ruby-identifier">server</span>.<span class="ruby-identifier">accept</span>)
+24:         <span class="ruby-constant">Thread</span>.<span class="ruby-identifier">start</span> <span class="ruby-keyword kw">do</span>
+25:           <span class="ruby-comment cmt"># puts &quot;log: Connection from #{session.peeraddr[2]} at #{session.peeraddr[3]}&quot;</span>
+26:           <span class="ruby-comment cmt"># session.puts &quot;Server: Connection from #{session.peeraddr[2]}\n&quot;</span>
+27:           <span class="ruby-identifier">handle_input</span>
+28:           <span class="ruby-identifier">session</span>.<span class="ruby-identifier">close</span>
+29:         <span class="ruby-keyword kw">end</span>
+30:       <span class="ruby-keyword kw">end</span>
+31:     <span class="ruby-keyword kw">end</span>
+32:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="clear-method" class="method-detail ">
+				<a name="method-i-clear"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">clear</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+clear history
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="clear-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 80</span>
+80:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">clear</span>
+81:     <span class="ruby-identifier">@@input_history</span>.<span class="ruby-identifier">clear</span>
+82:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="close-method" class="method-detail ">
+				<a name="method-i-close"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">close</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="close-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 75</span>
+75:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">close</span>
+76:     <span class="ruby-identifier">session</span> = <span class="ruby-keyword kw">nil</span>
+77:     <span class="ruby-identifier">server</span>.<span class="ruby-identifier">close</span>
+78:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="handle-input-method" class="method-detail ">
+				<a name="method-i-handle_input"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">handle_input</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="handle-input-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 40</span>
+40:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">handle_input</span>
+41:     <span class="ruby-identifier">input</span> = <span class="ruby-identifier">session</span>.<span class="ruby-identifier">gets</span>
+42:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">input</span>
+43:       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;received: #{input.inspect}&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">opts</span>[<span class="ruby-value">:debug</span>]
+44:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">input</span>
+45:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/clear/</span>
+46:         <span class="ruby-identifier">clear</span>
+47:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/history/</span>
+48:         <span class="ruby-identifier">session</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">input_history</span>.<span class="ruby-identifier">to_json</span>
+49:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/exit/</span>
+50:         <span class="ruby-keyword kw">begin</span>
+51:           <span class="ruby-identifier">close</span>
+52:         <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Exception</span>
+53:         <span class="ruby-keyword kw">end</span>
+54:         <span class="ruby-keyword kw">return</span>
+55:       <span class="ruby-keyword kw">when</span> <span class="ruby-regexp re">/^\s*(GET|POST|PUT|DELETE)\s+([^ ]*)\s+(.*)$/</span>
+56:         <span class="ruby-identifier">@@input_history</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">parse_input</span>(<span class="ruby-identifier">input</span>)
+57:       <span class="ruby-keyword kw">else</span>
+58:         <span class="ruby-identifier">@@input_history</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">chomp</span>
+59:       <span class="ruby-keyword kw">end</span>
+60:     <span class="ruby-keyword kw">end</span>
+61:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="input-history-method" class="method-detail ">
+				<a name="method-i-input_history"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">input_history</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="input-history-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 33</span>
+33:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">input_history</span>
+34:     <span class="ruby-identifier">@@input_history</span>
+35:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="parse-input-method" class="method-detail ">
+				<a name="method-i-parse_input"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">parse_input</span><span
+						class="method-args">(input)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="parse-input-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 62</span>
+62:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse_input</span>(<span class="ruby-identifier">input</span>)
+63:     <span class="ruby-identifier">data</span> = {}
+64:     <span class="ruby-identifier">data</span>[<span class="ruby-value">:raw</span>] = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">chomp</span>
+65:     (<span class="ruby-identifier">method</span>,<span class="ruby-identifier">uri</span>,<span class="ruby-identifier">http</span>) = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp re">/^\s*(\w+)\s+([^ ]*)\s+(.*)$/</span>).<span class="ruby-identifier">flatten</span>
+66: 
+67:     <span class="ruby-identifier">data</span>[<span class="ruby-value">:method</span>] = <span class="ruby-identifier">method</span>
+68:     <span class="ruby-identifier">data</span>[<span class="ruby-value">:http</span>] = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">chomp</span>
+69:     <span class="ruby-identifier">data</span>[<span class="ruby-value">:uri</span>] = <span class="ruby-identifier">uri</span>
+70:     <span class="ruby-identifier">u</span> = <span class="ruby-constant">URI</span>(<span class="ruby-identifier">uri</span>)
+71:     <span class="ruby-identifier">data</span>[<span class="ruby-value">:path</span>] = <span class="ruby-identifier">u</span>.<span class="ruby-identifier">path</span>
+72:     <span class="ruby-identifier">data</span>[<span class="ruby-value">:query</span>] = <span class="ruby-constant">CGI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">u</span>.<span class="ruby-identifier">query</span>)
+73:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">data</span>
+74:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="wait-method" class="method-detail ">
+				<a name="method-i-wait"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">wait</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="wait-source">
+<pre>
+    <span class="ruby-comment cmt"># File spec/accept.rb, line 36</span>
+36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">wait</span>
+37:     <span class="ruby-ivar">@handle</span>.<span class="ruby-identifier">join</span>
+38:   <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
