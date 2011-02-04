@@ -9,6 +9,7 @@ describe 'km_send' do
         FileUtils.rm file
       end
       KM.reset
+      Helper.clear
     end
     it "should test commandline version" do
       KM::init 'KM_KEY', :log_dir => __('log'), :host => '127.0.0.1:9292', :use_cron => true
