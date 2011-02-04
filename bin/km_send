@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'km'
+if ARGV.include? '--help' or ARGV.include? '-h'
+  $stderr.puts "#{File.basename($0)} [<log_dir>]\n\n"
+  exit
+end
+KM.init('', :log_dir => ARGV[0] || KM.log_dir, :host => ARGV[1] || KM.host)
+KM.send_logged_queries
