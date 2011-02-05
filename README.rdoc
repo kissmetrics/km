@@ -1,9 +1,6 @@
-= Overview
+= Documentation
 
-KISSmetrics is different from other analytics platforms due to a combination of
-three key features. We focus on funnels and conversions and make them easy to
-track and interpret, use people as the basic unit of measure, and support
-tracking of highly-flexible custom data through our simple API.
+We are hosting our documentation for our Ruby API here: http://support.kissmetrics.com/apis/ruby
 
 = SaaS
 
@@ -13,3 +10,5 @@ http://support.kissmetrics.com/getting-started/saas_basics
 In order to get the API for SaaS, be sure to:
 
     require 'km/saas'
+
+For the methods used, see the {rdoc for SaaS}[link:KM/SaaS.html]

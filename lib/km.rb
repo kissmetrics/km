@@ -82,7 +82,7 @@ class KM
       end
     end
 
-    def send_logged_queries
+    def send_logged_queries # :nodoc:
       line = nil
       begin
         return unless File.exists?(log_name(:query))
@@ -111,6 +111,7 @@ class KM
       @host
     end
 
+    # :stopdoc:
     protected
     def hash_keys_to_str(hash)
       Hash[*hash.map { |k,v| k.class == Symbol ? [k.to_s,v] : [k,v] }.flatten] # convert all keys to strings
@@ -245,11 +246,6 @@ class KM
       end
       return true
     end
+    # :startdoc:
   end
-end
-
-if __FILE__ == $0
-  $stderr.puts "At least one argument required. #{$0} <km_key> [<log_dir>]" unless ARGV[0]
-  KM.init(ARGV[0], :log_dir => ARGV[1] || KM.log_dir, :host => ARGV[2] || KM.host)
-  KM.send_logged_queries
 end
