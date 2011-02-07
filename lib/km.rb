@@ -85,8 +85,10 @@ class KM
     def send_logged_queries # :nodoc:
       line = nil
       begin
-        return unless File.exists?(log_name(:query))
-        FileUtils.move(log_name(:query), log_name(:send))
+        query_log = log_name(:query)
+        query_log = log_name(:query_old) unless File.exists?(query_log)
+        return unless File.exists?(query_log) # can't find logfile to send
+        FileUtils.move(query_log, log_name(:send))
         File.open(log_name(:send)) do |fh|
           while not fh.eof?
             begin
@@ -130,12 +132,14 @@ class KM
       return @logs[type] if @logs[type]
       fname = ''
       env = ''
-      # env = '_' + Rails.env if defined? Rails
+      env = '_' + Rails.env if defined? Rails
       case type
       when :error
         fname = "kissmetrics#{env}_error.log"
       when :query
         fname = "kissmetrics#{env}_query.log"
+      when :query_old # backwards compatibility
+        fname = "kissmetrics_query.log"
       when :sent
         fname = "kissmetrics#{env}_sent.log"
       when :send
