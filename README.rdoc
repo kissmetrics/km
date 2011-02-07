@@ -7,8 +7,4 @@ We are hosting our documentation for our Ruby API here: http://support.kissmetri
 This gem includes SaaS calls. For more information please refer to:
 http://support.kissmetrics.com/getting-started/saas_basics
 
-In order to get the API for SaaS, be sure to:
-
-    require 'km/saas'
-
 For the methods used, see the {rdoc for SaaS}[link:KM/SaaS.html]

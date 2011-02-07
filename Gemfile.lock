@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kissmetrics (1.1.0)
+    km (1.1.0)
 
 GEM
   remote: http://rubygems.org/
@@ -25,7 +25,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bundler (>= 1.0.0)
-  kissmetrics!
+  km!
   rake
   rspec (~> 2.4.0)
   watchr

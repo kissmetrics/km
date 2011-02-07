@@ -2,7 +2,7 @@
 require File.expand_path("../lib/km/version", __FILE__)
 
 Gem::Specification.new do |s|
-  s.name        = "kissmetrics"
+  s.name        = "km"
   s.version     = KM::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["KISSmetrics"]
