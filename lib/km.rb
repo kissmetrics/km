@@ -163,6 +163,7 @@ class KM
       msg = Time.now.strftime("<%c> ") + error.message
       $stderr.puts msg if @to_stderr
       log(:error, msg)
+      rescue Exception # rescue incase hoptoad has issues
     end
 
     def log(type,msg)
