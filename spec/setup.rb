@@ -67,4 +67,12 @@ class Hash
   end
 end
 
+def write_log(type, content)
+  KM.instance_eval { @log_dir = __('log') }
+  log_name = KM.send :log_name, type
+  File.open(log_name, 'w+') do |fh|
+    fh.puts content
+  end
+end
+
 accept = Accept.new

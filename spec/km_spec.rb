@@ -171,9 +171,9 @@ describe KM do
       KM::init 'KM_OTHER', :log_dir => __('log'), :host => '127.0.0.1:9291', :to_stderr => false
       KM::identify 'bob'
       KM::record 'My Action' # records an action with no action-specific properties;
-      Helper.accept(:history).count.should == 0
-      File.exists?(__('log/kissmetrics_query.log')).should == true
-      File.exists?(__('log/kissmetrics_error.log')).should == true
+      Helper.accept(:history).size.should == 0
+      File.exists?(__('log/kissmetrics_production_query.log')).should == true
+      File.exists?(__('log/kissmetrics_production_error.log')).should == true
     end
 
     it "should escape @ properly" do

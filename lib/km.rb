@@ -32,7 +32,8 @@ class KM
         :host      => @host,
         :log_dir   => @log_dir,
         :to_stderr => @to_stderr,
-        :use_cron  => @use_cron
+        :use_cron  => @use_cron,
+        :env       => set_env,
       }
       options.reverse_merge!(default)
       begin
@@ -41,10 +42,17 @@ class KM
         @log_dir   = options[:log_dir]
         @use_cron  = options[:use_cron]
         @to_stderr = options[:to_stderr]
+        @env       = options[:env]
         log_dir_writable?
       rescue Exception => e
         log_error(e)
       end
+    end
+
+    def set_env
+      @env = Rails.env if defined? Rails
+      @env ||= ENV['RACK_ENV']
+      @env ||= 'production'
     end
 
     def identify(id)
@@ -85,8 +93,8 @@ class KM
     def send_logged_queries # :nodoc:
       line = nil
       begin
-        query_log = log_name(:query)
-        query_log = log_name(:query_old) unless File.exists?(query_log)
+        query_log = log_name(:query_old)
+        query_log = log_name(:query) unless File.exists?(query_log)
         return unless File.exists?(query_log) # can't find logfile to send
         FileUtils.move(query_log, log_name(:send))
         File.open(log_name(:send)) do |fh|
@@ -131,8 +139,7 @@ class KM
     def log_name(type)
       return @logs[type] if @logs[type]
       fname = ''
-      env = ''
-      env = '_' + Rails.env if defined? Rails
+      env = @env ? "_#{@env}" : ''
       case type
       when :error
         fname = "kissmetrics#{env}_error.log"
@@ -207,7 +214,7 @@ class KM
     end
 
     def send_query(line)
-      if defined? Rails and not Rails.env.production?
+      if @env != 'production'
         log_sent(line)
         return
       end

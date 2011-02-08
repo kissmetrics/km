@@ -1,9 +1,26 @@
 #!/usr/bin/env ruby
-
 require 'km'
-if ARGV.include? '--help' or ARGV.include? '-h'
-  $stderr.puts "#{File.basename($0)} [<log_dir>]\n\n"
-  exit
+
+env = 'production'
+begin
+  parser = OptionParser.new()
+  parser.banner = "#{File.basename($0)} [<log_dir>]\n\n"
+  parser.on("-e", "--env ENVIRONMENT", "The environment to run in. Default: production") do |e|
+    puts "Note, only production will actually send queries to the kissmetrics servers."
+    env = e
+  end
+
+  parser.on_tail("-h", "--help", "This help.") do
+    puts parser
+    exit
+  end
+
+  opts = parser.parse(ARGV)
+rescue => e
+  $stderr.puts "\nERROR: #{e.message}\n\n"
+  $stderr.puts parser.help
+  exit(-1)
 end
-KM.init('', :log_dir => ARGV[0] || KM.log_dir, :host => ARGV[1] || KM.host)
+
+KM.init('', :log_dir => opts[0] || KM.log_dir, :host => opts[1] || KM.host, :env => env)
 KM.send_logged_queries
