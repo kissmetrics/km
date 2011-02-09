@@ -2,6 +2,10 @@
 
 We are hosting our documentation for our Ruby API here: http://support.kissmetrics.com/apis/ruby
 
+= Installation
+
+  gem install km
+
 = SaaS
 
 This gem includes SaaS calls. For more information please refer to:
