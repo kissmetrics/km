@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["support@kissmetrics.com"]
   s.homepage    = "http://rubygems.org/gems/km"
   s.summary     = "KISSmetrics ruby API gem"
-  s.description = "KISSmetrics ruby API gemtion"
+  s.description = "KISSmetrics ruby API gem"
 
   s.required_rubygems_version = ">= 1.3.6"
   s.rubyforge_project         = "kissmetrics"
