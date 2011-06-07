@@ -3,15 +3,6 @@ require 'socket'
 require 'fileutils'
 require 'km/saas'
 
-class Hash
-  def reverse_merge(other_hash)
-    other_hash.merge(self)
-  end if !respond_to?(:reverse_merge)
-  def reverse_merge!(other_hash)
-    replace(reverse_merge(other_hash))
-  end if !respond_to?(:reverse_merge)
-end
-
 class KMError < StandardError; end
 
 class KM
@@ -35,7 +26,8 @@ class KM
         :use_cron  => @use_cron,
         :env       => set_env,
       }
-      options.reverse_merge!(default)
+      options = default.merge(options)
+
       begin
         @key       = key
         @host      = options[:host]
@@ -196,7 +188,8 @@ class KM
       data.update('_p' => @id) unless update == false
       data.update('_k' => @key)
       data.update '_d' => 1 if data['_t']
-      data.reverse_merge!('_t' => Time.now.to_i)
+      data['_t'] ||= Time.now.to_i
+
       data.inject(query) do |query,key_val|
         query_arr <<  key_val.collect { |i| CGI.escape i.to_s }.join('=')
       end
