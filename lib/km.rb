@@ -1,5 +1,6 @@
 require 'cgi'
 require 'socket'
+require 'net/http'
 require 'fileutils'
 require 'km/saas'
 
@@ -211,14 +212,11 @@ class KM
         log_sent(line)
         return
       end
-      host,port = @host.split(':')
       begin
-        sock = TCPSocket.open(host,port)
-        request = 'GET ' +  line + " HTTP/1.1\r\n"
-        request += "Host: " + Socket.gethostname + "\r\n"
-        request += "Connection: Close\r\n\r\n";
-        sock.print(request)
-        sock.close
+        host,port = @host.split(':')
+        res = Net::HTTP.start(host, port) do |http|
+          http.get(line)
+        end
       rescue Exception => e
         raise KMError.new("#{e} for host #{@host}")
       end
