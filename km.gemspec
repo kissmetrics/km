@@ -16,9 +16,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency "bundler", ">= 1.0.0"
   s.add_development_dependency "rspec", "~> 2.4.0"
-  s.add_development_dependency "awesome_print"
   s.add_development_dependency "rake"
-  s.add_development_dependency "watchr"
   s.add_development_dependency "json"
 
   s.files        = `git ls-files`.split("\n")

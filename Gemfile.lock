@@ -1,12 +1,11 @@
 PATH
   remote: .
   specs:
-    km (1.1.0)
+    km (1.1.1)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    awesome_print (0.3.1)
     diff-lcs (1.1.2)
     json (1.5.1)
     rake (0.8.7)
@@ -18,16 +17,13 @@ GEM
     rspec-expectations (2.4.0)
       diff-lcs (~> 1.1.2)
     rspec-mocks (2.4.0)
-    watchr (0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  awesome_print
   bundler (>= 1.0.0)
   json
   km!
   rake
   rspec (~> 2.4.0)
-  watchr
