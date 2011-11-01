@@ -214,7 +214,8 @@ class KM
       end
       begin
         host,port = @host.split(':')
-        res = Net::HTTP.start(host, port) do |http|
+        proxy = URI.parse(ENV['http_proxy'] || ENV['HTTP_PROXY'] || '')
+        res = Net::HTTP::Proxy(proxy.host, proxy.port, proxy.user, proxy.password).start(host, port) do |http|
           http.get(line)
         end
       rescue Exception => e
