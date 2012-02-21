@@ -1,4 +1,4 @@
-require 'cgi'
+require 'uri'
 require 'socket'
 require 'net/http'
 require 'fileutils'
@@ -192,7 +192,7 @@ class KM
       data['_t'] ||= Time.now.to_i
 
       data.inject(query) do |query,key_val|
-        query_arr <<  key_val.collect { |i| CGI.escape i.to_s }.join('=')
+        query_arr <<  key_val.collect { |i| URI.escape i.to_s }.join('=')
       end
       query = '/' + type + '?' + query_arr.join('&')
       if @use_cron
