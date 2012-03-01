@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    km (1.1.1)
+    km (1.1.2)
 
 GEM
   remote: http://rubygems.org/
