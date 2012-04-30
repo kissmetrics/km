@@ -190,9 +190,11 @@ class KM
       data.update('_k' => @key)
       data.update '_d' => 1 if data['_t']
       data['_t'] ||= Time.now.to_i
-
+      
+      unsafe = Regexp.new("[^#{URI::REGEXP::PATTERN::UNRESERVED}]", false, 'N')
+      
       data.inject(query) do |query,key_val|
-        query_arr <<  key_val.collect { |i| URI.escape i.to_s }.join('=')
+        query_arr <<  key_val.collect { |i| URI.escape(i.to_s, unsafe) }.join('=')
       end
       query = '/' + type + '?' + query_arr.join('&')
       if @use_cron
