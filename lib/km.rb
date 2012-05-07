@@ -14,6 +14,7 @@ class KM
   @log_dir   = '/tmp'
   @to_stderr = true
   @use_cron  = false
+  @force     = false
 
   class << self
     class IdentError < StandardError; end
@@ -25,6 +26,7 @@ class KM
         :log_dir   => @log_dir,
         :to_stderr => @to_stderr,
         :use_cron  => @use_cron,
+        :force     => @force,
         :env       => set_env,
       }
       options = default.merge(options)
@@ -35,6 +37,7 @@ class KM
         @log_dir   = options[:log_dir]
         @use_cron  = options[:use_cron]
         @to_stderr = options[:to_stderr]
+        @force     = options[:force]
         @env       = options[:env]
         log_dir_writable?
       rescue Exception => e
@@ -120,13 +123,15 @@ class KM
       Hash[*hash.map { |k,v| k.class == Symbol ? [k.to_s,v] : [k,v] }.flatten] # convert all keys to strings
     end
     def reset
-      @id        = nil
-      @key       = nil
-      @logs      = {}
-      @host      = 'trk.kissmetrics.com:80'
-      @log_dir   = '/tmp'
-      @to_stderr = true
-      @use_cron  = false
+      @id         = nil
+      @key        = nil
+      @logs       = {}
+      @host       = 'trk.kissmetrics.com:80'
+      @log_dir    = '/tmp'
+      @to_stderr  = true
+      @use_cron   = false
+      @env        = nil
+      @force = false
     end
 
     def log_name(type)
@@ -210,20 +215,21 @@ class KM
     end
 
     def send_query(line)
-      if @env != 'production'
+      if @force || @env == 'production'
+        begin
+          host,port = @host.split(':')
+          proxy = URI.parse(ENV['http_proxy'] || ENV['HTTP_PROXY'] || '')
+          res = Net::HTTP::Proxy(proxy.host, proxy.port, proxy.user, proxy.password).start(host, port) do |http|
+            http.get(line)
+          end
+        rescue Exception => e
+          raise KMError.new("#{e} for host #{@host}")
+        end
+        log_sent(line)
+      else
         log_sent(line)
         return
       end
-      begin
-        host,port = @host.split(':')
-        proxy = URI.parse(ENV['http_proxy'] || ENV['HTTP_PROXY'] || '')
-        res = Net::HTTP::Proxy(proxy.host, proxy.port, proxy.user, proxy.password).start(host, port) do |http|
-          http.get(line)
-        end
-      rescue Exception => e
-        raise KMError.new("#{e} for host #{@host}")
-      end
-      log_sent(line)
     end
 
     def log_dir_writable?

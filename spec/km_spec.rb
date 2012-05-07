@@ -175,7 +175,6 @@ describe KM do
       File.exists?(__('log/kissmetrics_production_query.log')).should == true
       File.exists?(__('log/kissmetrics_production_error.log')).should == true
     end
-
     it "should escape @ properly" do
       KM::init 'KM_OTHER', :log_dir => __('log'), :host => '127.0.0.1:9292', :to_stderr => false, :use_cron => true
       KM::identify 'bob'
