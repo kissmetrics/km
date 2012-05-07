@@ -4,11 +4,17 @@ require 'optparse'
 require 'km'
 
 env = 'production'
+force = false
 begin
   parser = OptionParser.new()
   parser.banner = "#{File.basename($0)} [<log_dir>]\n\n"
+
+  parser.on("-f", "--force", "Force sending the data to KM, ignoring the environment.") do |e|
+    force = true
+  end
+
   parser.on("-e", "--env ENVIRONMENT", "The environment to run in. Default: production") do |e|
-    puts "Note, only production will actually send queries to the kissmetrics servers."
+    puts "Note, only production will actually send queries to the kissmetrics servers unless the --force flag is used." unless force
     env = e
   end
 
@@ -24,5 +30,6 @@ rescue => e
   exit(-1)
 end
 
-KM.init('', :log_dir => opts[0] || KM.log_dir, :host => opts[1] || KM.host, :env => env)
+
+KM.init('', :log_dir => opts[0] || KM.log_dir, :host => opts[1] || KM.host, :force => force, :env => env)
 KM.send_logged_queries
