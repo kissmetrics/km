@@ -16,8 +16,7 @@ describe 'km_send' do
         KM::init 'KM_KEY', :log_dir => __('log'), :host => '127.0.0.1:9292', :use_cron => true
       end
       it "should test commandline version" do
-        KM::identify 'bob'
-        KM::record 'Signup', 'age' => 26
+        KM::record 'bob', 'Signup', 'age' => 26
         `bundle exec km_send #{__('log/')} 127.0.0.1:9292`
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
@@ -84,8 +83,7 @@ describe 'km_send' do
     end
     it "should send from diff environment when force flag is used" do
       KM::init 'KM_KEY', :log_dir => __('log'), :host => '127.0.0.1:9292', :use_cron => true, :env => 'development', :force => true
-      KM::identify 'bob'
-      KM::record 'Signup', 'age' => 26
+      KM::record 'bob', 'Signup', 'age' => 26
       `bundle exec km_send -f -e development #{__('log/')} 127.0.0.1:9292`
       sleep 0.1
       res = Helper.accept(:history).first.indifferent
