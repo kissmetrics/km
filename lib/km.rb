@@ -14,7 +14,7 @@ class KM
   @log_dir   = '/tmp'
   @to_stderr = true
   @use_cron  = false
-  @force     = false
+  @dryrun    = false
 
   class << self
     class IdentError < StandardError; end
@@ -26,7 +26,7 @@ class KM
         :log_dir   => @log_dir,
         :to_stderr => @to_stderr,
         :use_cron  => @use_cron,
-        :force     => @force,
+        :dryrun    => @dryrun,
         :env       => set_env,
       }
       options = default.merge(options)
@@ -37,7 +37,7 @@ class KM
         @log_dir   = options[:log_dir]
         @use_cron  = options[:use_cron]
         @to_stderr = options[:to_stderr]
-        @force     = options[:force]
+        @dryrun    = options[:dryrun]
         @env       = options[:env]
         log_dir_writable?
       rescue Exception => e
@@ -215,7 +215,9 @@ class KM
     end
 
     def send_query(line)
-      if @force || @env == 'production'
+      if @dryrun
+        log_sent(line)
+      else
         begin
           host,port = @host.split(':')
           proxy = URI.parse(ENV['http_proxy'] || ENV['HTTP_PROXY'] || '')
@@ -226,9 +228,6 @@ class KM
           raise KMError.new("#{e} for host #{@host}")
         end
         log_sent(line)
-      else
-        log_sent(line)
-        return
       end
     end
 
