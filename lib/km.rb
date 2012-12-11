@@ -20,6 +20,8 @@ class KM
     class IdentError < StandardError; end
     class InitError < StandardError; end
 
+    attr_reader :key
+
     def init(key, options={})
       default = {
         :host      => @host,
@@ -192,12 +194,12 @@ class KM
       query_arr = []
       query     = ''
       data.update('_p' => @id) unless update == false
-      data.update('_k' => @key)
+      data.update('_k' => key)
       data.update '_d' => 1 if data['_t']
       data['_t'] ||= Time.now.to_i
-      
+
       unsafe = Regexp.new("[^#{URI::REGEXP::PATTERN::UNRESERVED}]", false, 'N')
-      
+
       data.inject(query) do |query,key_val|
         query_arr <<  key_val.collect { |i| URI.escape(i.to_s, unsafe) }.join('=')
       end
@@ -251,7 +253,7 @@ class KM
     end
 
     def is_initialized?
-      if @key == nil
+      if key == nil
         log_error InitError.new("Need to initialize first (KM::init <your_key>)")
         return false
       end
