@@ -75,11 +75,11 @@ describe 'km_send' do
         res[:query]['_t'].first.should == '1297105499'
         res[:query]['age'].first.should == '26'
       end
-      it "should not send from diff environment as we only send when env is production" do
+      it "sends unless dryrun is specified" do
         File.open(__('log/kissmetrics_alpha_query.log'), 'w+') { |h| h.puts "/e?_t=1297105499&_n=Signup&_p=bob&_k=KM_KEY&age=26" }
         `bundle exec km_send -e alpha #{__('log/')} 127.0.0.1:9292`
         sleep 0.1
-        res = Helper.accept(:history).first.should == nil
+        res = Helper.accept(:history).first.should_not be_nil
       end
     end
     it "should send from diff environment when force flag is used" do
