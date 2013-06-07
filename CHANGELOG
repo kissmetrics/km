@@ -1,3 +1,6 @@
+1.2.0
+	- Make KM gem thread safe
+
 1.1.0
 	- Add support for hoptoad notifier if defined
 	- change log names to use rails environment if rails is defined
