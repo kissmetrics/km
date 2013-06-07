@@ -13,11 +13,10 @@ describe KM do
   describe "should record events" do
     before do
       KM::init 'KM_KEY', :log_dir => __('log'), :host => '127.0.0.1:9292'
-      KM::identify 'bob'
     end
     context "plain usage" do
       it "records a signup event" do
-        KM.signed_up 'Premium'
+        KM.signed_up 'bob', 'Premium'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:path].should == '/e'
@@ -25,7 +24,7 @@ describe KM do
         res[:query]['Plan Name'].first.should == 'Premium'
       end
       it "records an upgraded event" do
-        KM.upgraded 'Unlimited'
+        KM.upgraded 'bob', 'Unlimited'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:path].should == '/e'
@@ -33,7 +32,7 @@ describe KM do
         res[:query]['Plan Name'].first.should == 'Unlimited'
       end
       it "records a downgraded event" do
-        KM.downgraded 'Free'
+        KM.downgraded 'bob', 'Free'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:path].should == '/e'
@@ -41,7 +40,7 @@ describe KM do
         res[:query]['Plan Name'].first.should == 'Free'
       end
       it "records a billed event" do
-        KM.billed 32, 'Upgraded'
+        KM.billed 'bob', 32, 'Upgraded'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:path].should == '/e'
@@ -50,21 +49,14 @@ describe KM do
         res[:query]['Billing Description'].first.should == 'Upgraded'
       end
       it "records a canceled event" do
-        KM.canceled
-        sleep 0.1
-        res = Helper.accept(:history).first.indifferent
-        res[:path].should == '/e'
-        res[:query]['_n'].first.should == 'Canceled'
-      end
-      it "records a cancelled event" do
-        KM.cancelled
+        KM.canceled 'bob'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:path].should == '/e'
         res[:query]['_n'].first.should == 'Canceled'
       end
       it "records a visited site event" do
-        KM.visited_site 'http://duckduckgo.com', 'http://kissmetrics.com'
+        KM.visited_site 'bob', 'http://duckduckgo.com', 'http://kissmetrics.com'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:path].should == '/e'
@@ -75,43 +67,37 @@ describe KM do
     end
     context "usage with props" do
       it "records a signup event" do
-        KM.signed_up 'Premium', :foo => 'bar'
+        KM.signed_up 'bob', 'Premium', :foo => 'bar'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:query]['foo'].first.should == 'bar'
       end
       it "records an upgraded event" do
-        KM.upgraded 'Unlimited', :foo => 'bar'
+        KM.upgraded 'bob', 'Unlimited', :foo => 'bar'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:query]['foo'].first.should == 'bar'
       end
       it "records a downgraded event" do
-        KM.downgraded 'Free', :foo => 'bar'
+        KM.downgraded 'bob', 'Free', :foo => 'bar'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:query]['foo'].first.should == 'bar'
       end
       it "records a billed event" do
-        KM.billed 32, 'Upgraded', :foo => 'bar'
+        KM.billed 'bob', 32, 'Upgraded', :foo => 'bar'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:query]['foo'].first.should == 'bar'
       end
       it "records a canceled event" do
-        KM.canceled :foo => 'bar'
-        sleep 0.1
-        res = Helper.accept(:history).first.indifferent
-        res[:query]['foo'].first.should == 'bar'
-      end
-      it "records a cancelled event" do
-        KM.cancelled :foo => 'bar'
+        KM.canceled 'bob', :foo => 'bar'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:query]['foo'].first.should == 'bar'
       end
       it "records a visited site event" do
-        KM.visited_site 'http://duckduckgo.com', 'http://kissmetrics.com', :foo => 'bar'
+        KM.visited_site 'bob', 'http://duckduckgo.com', 'http://kissmetrics.com', :foo => 'bar'
         sleep 0.1
         res = Helper.accept(:history).first.indifferent
         res[:query]['foo'].first.should == 'bar'
