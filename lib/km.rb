@@ -195,7 +195,7 @@ class KM
       query     = ''
       data.update('_p' => @id) unless update == false
       data.update('_k' => key)
-      data.update '_d' => 1 if data['_t']
+      data.update '_d' => 1
       data['_t'] ||= Time.now.to_i
 
       unsafe = Regexp.new("[^#{URI::REGEXP::PATTERN::UNRESERVED}]", false, 'N')
