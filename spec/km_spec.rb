@@ -182,4 +182,12 @@ describe KM do
       IO.readlines(KM::log_name(:query)).join.should_not contain_string('@')
     end
   end
+
+  describe ".key" do
+    it "should return the key" do
+      key = "4923i50934u54309h"
+      KM::init(key)
+      KM::key.should == key
+    end
+  end
 end
