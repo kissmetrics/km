@@ -4,6 +4,10 @@
 
 We are hosting our documentation for our Ruby API here: http://support.kissmetrics.com/apis/ruby
 
+= +kmts+ version 1.0.2
+
+Version 1.0.2 of the +kmts+ gem had an issue where it was found to not actually be thread safe. If you were using version 1.0.2 of the +kmts+ gem, you were likely using non thread-safe code. In this case, you will want to either switch to using the non thread-safe +km+ gem, or update your code to use the thread-safe +kmts+ gem version >= 2.0.0.
+
 = Installation
 
   gem install km
