@@ -3,3 +3,5 @@ pkg/*
 .bundle
 spec/log/*
 .rvmrc
+.ruby-version
+.ruby-gemset
