@@ -1,6 +1,6 @@
 = Documentation
 
-<b>The original +km+ Ruby gem is not thread safe.</b> We have released a new gem, {kmts}[https://github.com/kissmetrics/km/tree/kmts], that is threadsafe.
+<b>The original +km+ Ruby gem is not thread safe.</b> We have released a new gem, {kmts}[https://github.com/kissmetrics/kmts], that is threadsafe.
 
 We are hosting our documentation for our Ruby API here: http://support.kissmetrics.com/apis/ruby
 
