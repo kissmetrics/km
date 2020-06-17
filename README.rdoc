@@ -2,11 +2,15 @@
 
 <b>The original +km+ Ruby gem is not thread safe.</b> We have released a new gem, {kmts}[https://github.com/kissmetrics/kmts], that is threadsafe.
 
-We are hosting our documentation for our Ruby API here: http://support.kissmetrics.com/apis/ruby
+We are hosting our documentation for our Ruby API here: https://support.kissmetrics.io/reference#ruby
 
 = +kmts+ version 1.0.2
 
 Version 1.0.2 of the +kmts+ gem had an issue where it was found to not actually be thread safe. If you were using version 1.0.2 of the +kmts+ gem, you were likely using non thread-safe code. In this case, you will want to either switch to using the non thread-safe +km+ gem, or update your code to use the thread-safe +kmts+ gem version >= 2.0.0.
+
+= km version 1.2.0
+
+This version uses the `trk.kissmetrics.io` tracking server domain.
 
 = Installation
 
@@ -15,6 +19,6 @@ Version 1.0.2 of the +kmts+ gem had an issue where it was found to not actually 
 = SaaS
 
 This gem includes SaaS calls. For more information please refer to:
-http://support.kissmetrics.com/getting-started/saas_basics
+https://support.kissmetrics.io/docs/saas-essentials
 
 For the methods used, see the {rdoc for SaaS}[link:KM/SaaS.html]

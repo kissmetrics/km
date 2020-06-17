@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.version     = KM::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["KISSmetrics"]
-  s.email       = ["support@kissmetrics.com"]
+  s.email       = ["support@kissmetrics.io"]
   s.homepage    = "https://github.com/kissmetrics/km"
   s.summary     = "KISSmetrics ruby API gem"
   s.description = "KISSmetrics ruby API gem"

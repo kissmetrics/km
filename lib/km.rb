@@ -10,7 +10,7 @@ class KM
   @id        = nil
   @key       = nil
   @logs      = {}
-  @host      = 'trk.kissmetrics.com:80'
+  @host      = 'trk.kissmetrics.io:80'
   @log_dir   = '/tmp'
   @to_stderr = true
   @use_cron  = false
@@ -128,7 +128,7 @@ class KM
       @id         = nil
       @key        = nil
       @logs       = {}
-      @host       = 'trk.kissmetrics.com:80'
+      @host       = 'trk.kissmetrics.io:80'
       @log_dir    = '/tmp'
       @to_stderr  = true
       @use_cron   = false
