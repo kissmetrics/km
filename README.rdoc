@@ -8,7 +8,7 @@ We are hosting our documentation for our Ruby API here: https://support.kissmetr
 
 Version 1.0.2 of the +kmts+ gem had an issue where it was found to not actually be thread safe. If you were using version 1.0.2 of the +kmts+ gem, you were likely using non thread-safe code. In this case, you will want to either switch to using the non thread-safe +km+ gem, or update your code to use the thread-safe +kmts+ gem version >= 2.0.0.
 
-= km version 1.2.0
+= km version 1.3.0
 
 This version uses the `trk.kissmetrics.io` tracking server domain.
 
